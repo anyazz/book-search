@@ -1,3 +1,16 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/menu_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar" />
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,9 +22,8 @@
         android:id="@+id/ivBookCover"
         android:layout_width="280dp"
         android:layout_height="280dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp" />
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/tvTitle"
@@ -35,3 +47,4 @@
         android:textSize="22sp" />
 
 </RelativeLayout>
+    </LinearLayout>
