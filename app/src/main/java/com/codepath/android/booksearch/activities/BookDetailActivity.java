@@ -1,18 +1,25 @@
 package com.codepath.android.booksearch.activities;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.codepath.android.booksearch.R;
+import com.codepath.android.booksearch.models.Book;
+
+import org.parceler.Parcels;
 
 public class BookDetailActivity extends AppCompatActivity {
     private ImageView ivBookCover;
     private TextView tvTitle;
     private TextView tvAuthor;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +31,16 @@ public class BookDetailActivity extends AppCompatActivity {
         tvAuthor = (TextView) findViewById(R.id.tvAuthor);
 
         // Extract book object from intent extras
-
+        Book book = Parcels.unwrap((Parcelable) getIntent().getParcelableExtra("book"));
+//        Toast.makeText(context, "success", Toast.LENGTH_LONG);
         // Use book object to populate data into views
+        tvTitle.setText(book.getTitle());
+        tvAuthor.setText(book.getAuthor());
+        Glide.with(context)
+                .load(book.getCoverUrl())
+                .placeholder(R.drawable.ic_nocover)
+//                .error(placeholderId)
+                .into(ivBookCover);
     }
 
 
